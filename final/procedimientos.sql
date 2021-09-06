@@ -323,23 +323,24 @@ delete from  usuario where idUsuario = nidUsuario;
 END$$
 DELIMITER ;
 
-USE `G6P2_app_finanzas`;
-DROP procedure IF EXISTS `sp_VisualizarBalance`;
+DROP procedure IF EXISTS `G6P2_app_finanzas`.`sp_VisualizarBalance`;
 DELIMITER $$
 USE `G6P2_app_finanzas`$$
-CREATE PROCEDURE sp_VisualizarBalance()
+CREATE PROCEDURE sp_VisualizarBalance(in id varchar(20))
 BEGIN
-select * from mostrar_balance;
+select * from mostrar_balance
+where nombre = idUsuario;
 END$$
 DELIMITER ;
 
 USE `G6P2_app_finanzas`;
-DROP procedure IF EXISTS `sp_VisualizarHistorial`;
+DROP procedure IF EXISTS `G6P2_app_finanzas`.`sp_VisualizarHistorial`;
 DELIMITER $$
 USE `G6P2_app_finanzas`$$
-CREATE PROCEDURE sp_VisualizarHistorial()
+CREATE DEFINER=`grupo6P2`@`%` PROCEDURE `sp_VisualizarHistorial`(in id varchar(20))
 BEGIN
-select * from mostrar_gastos_ingresos;
+select * from mostrar_gastos_ingresos
+where nombre = idUsuario;
 END$$
 DELIMITER ;
 
